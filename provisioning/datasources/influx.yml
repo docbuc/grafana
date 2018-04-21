@@ -1,0 +1,13 @@
+# Datei: grafana/provisioning/datasources/influx.yml
+apiVersion: 1
+datasources:
+- name: InfluxDB
+  type: influxdb
+  access: proxy
+  orgId: 1
+  url: http://influx:8086
+  database: telegraf
+  isDefault: true
+  version: 1
+  editable: false
+

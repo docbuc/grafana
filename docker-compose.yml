@@ -1,0 +1,33 @@
+version: '3'
+services:
+  grafana:
+    image: grafana/grafana:latest
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - ./dashboards:/var/lib/grafana/dashboards
+      - ./provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=geheim
+  telegraf:
+    image: telegraf:1.5
+    hostname: telegraf
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: always
+  influx:
+    image: influxdb
+    restart: always
+    ports:
+      - 8086:8086
+    volumes:
+      - influx:/var/lib/influxdb
+    environment:
+      - INFLUXDB_USER=telegraf
+      - INFLUXDB_USER_PASSWORD=iijineeZ9iet
+      - INFLUXDB_DB=telegraf
+
+volumes:
+  influx:
