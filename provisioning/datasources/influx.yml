@@ -9,5 +9,7 @@ datasources:
   database: telegraf
   isDefault: true
   version: 1
-  editable: false
+  jsonData:
+    timeInterval: ">10s"
+  editable: true
 
