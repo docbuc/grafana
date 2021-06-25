@@ -14,11 +14,11 @@ services:
     build: telegraf/
     restart: always
   influx:
-    image: influxdb
+    image: influxdb:1.8
     restart: always
     ports:
       - 8086:8086
     environment:
       - INFLUXDB_USER=telegraf
-      - INFLUXDB_USER_PASSWORD=iijineeZ9iet
+      - INFLUXDB_USER_PASSWORD=geheim
       - INFLUXDB_DB=telegraf
