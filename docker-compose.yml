@@ -2,20 +2,20 @@
 version: '3'
 services:
   grafana:
-    image: docbuc/grafana:2
+    image: docbuc/grafana
     build: .
-    restart: always
+    restart: unless-stopped
     ports:
       - 3000:3000
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=geheim
   telegraf:
-    image: docbuc/telegraf:2
+    image: docbuc/telegraf
     build: telegraf/
-    restart: always
+    restart: unless-stopped
   influx:
     image: influxdb:1.8
-    restart: always
+    restart: unless-stopped
     ports:
       - 8086:8086
     environment:
